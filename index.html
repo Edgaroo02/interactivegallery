@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive</title>
+    <style>
+body {
+    text-align: center;
+    padding: 5px;
+    margin: 0px;
+}
+
+img {
+    padding: 10px;
+    margin: 10px auto;
+    position: static;
+    left: 50%;
+    border-radius: 10px;
+}
+
+
+.removeButton {
+    position: absolute;
+    background-color: rgba(247, 10, 58, 0.103);
+    border: 2px solid rgb(191, 191, 191);
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    margin: 150px 10px 100px 20px;
+    padding: 10px 20px;
+}
+
+
+    </style>
+
+
+</head>
+<body>
+
+    <h1>Interactive Image Gallery</h1>
+
+    <input type="text" id="imageInput">
+    <button id="imageButton" onclick="addImage()">Add Image</button>
+
+    <div class="gallery" id="gallery">
+
+    </div>
+
+<script>
+
+function addImage() {
+    const imageInput = document.getElementById('imageInput').value;
+    if (imageInput != '') {
+        const gallery = document.getElementById('gallery');
+
+        // create new div for the gallery
+        const galleryItem = document.createElement('div');
+        galleryItem.classList.add('gallery-item');
+
+        // create new image inside gallery div
+        const image = document.createElement('img');
+        image.src = imageInput;
+        image.classList.add('galleryImage');
+
+        // create a remove button
+        const removeButton = document.createElement('button');
+        removeButton.classList.add('removeButton');
+        removeButton.textContent = 'Remove';
+        removeButton.onclick = () => gallery.removeChild(galleryItem);
+
+        // append galleryItems
+        galleryItem.appendChild(image);
+        galleryItem.appendChild(removeButton);
+
+        // append gallery
+        gallery.appendChild(galleryItem);
+
+        // reset input field
+        document.getElementById('imageInput').value = '';
+
+    } else {  
+        alert('Please enter image URL Value');
+}
+};
+
+
+</script>
+</body>
+</html>
+
+<!--  
+
+
+
+    <input type="text" placeholder="Add Image URL Here..." class="inputImage" id="inputImage">
+    
+    <button class="addImage" id="addImage">Add Image</button>
+
+        <section>
+            <div class="gallery" id="gallery">
+
+            </div>
+        </section>
+
+    <script>
+function addImage() {
+    
+    const input = document.getElementById("inputImage").value;
+    if (input) {
+        const gallery = document.getElementById("gallery");
+
+        // New Div
+        const galleryDiv = document.createElement('div');
+        galleryDiv.classList.add('gallery-div');
+
+        // New Image
+        const galleryImage = document.createElement('img');
+        galleryImage.src = input;
+
+        // New Remove Button
+        const removeButton = document.createElement('button');
+        removeButton.classList.add('remove-button');
+        removeButton.textContent = 'Remove';
+        removeButton.onclick = () => gallery.removeChild(galleryDiv);
+
+        // Append items in Gallery
+        galleryDiv.appendChild(galleryDiv);
+        galleryDiv.appendChild(removeButton);
+
+        // Append Gallery
+        gallery.appendChild(galleryDiv);
+
+        // Clear input text
+        document.getElementById('input').value = '';
+
+    } else {
+        alert('Please ent');
+    }
+}
+
+    // Add event listener to Add button
+    document.getElementById('addImage').addEventListener('click', addImage);
+
+    </script>
+-->
